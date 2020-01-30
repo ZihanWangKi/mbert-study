@@ -5,9 +5,11 @@ import json
 '''
 Creates shards, considers sampling probability (exponential 0.7).
 # input: 
-        
+    - fnames: path to all the text files to process  
+    - outdir: path to output all the shards
+    - limit: number of lines of each shard, can be off by a few lines
 # output:
-    
+    - Sharded files inside outdir
 '''
 
 

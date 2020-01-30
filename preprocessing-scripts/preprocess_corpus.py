@@ -1,16 +1,20 @@
 import argparse
+import os
 import sys
-BERT_PATH="./bert/"
+
+BERT_PATH = "./bert/"
 sys.path.append(BERT_PATH)
 import tokenization
 from multiprocessing.dummy import Pool as ThreadPool
 import itertools
 
-UNICODE_OFFSET = 200000
+UNICODE_OFFSET = 200000 # this offset is enough for all corpuses we experimented with
 
 '''
-If the file is too large to store in memory, split it first
+TODO: If the file is too large to store in memory, split it first
 '''
+
+
 def transform(sentences, start_index, end_index, make_fake=False):
     tokenizer = tokenization.BasicTokenizer(do_lower_case=False)
     output = []
@@ -26,17 +30,23 @@ def transform(sentences, start_index, end_index, make_fake=False):
         else:
             words = tokenizer.tokenize(line)
             if make_fake:
+                assert all(all(ord(c) < UNICODE_OFFSET for c in word) for word in words), "Character unicode >= UNICODE_OFFSET"
+
                 words = ["".join([chr(ord(c) + UNICODE_OFFSET) for c in word]) for word in words]
             output.append(" ".join(words) + "\n")
     return output
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--corpus", required=True)
-    parser.add_argument("--threads", type=int, default=12)
-    parser.add_argument("--output", required=True)
-    parser.add_argument("--make_fake", action="store_true")
+    parser.add_argument("--corpus", required=True, help="Single file representing the input corpus")
+    parser.add_argument("--threads", type=int, default=12, help="Number of threads this process can use")
+    parser.add_argument("--output", required=True, help="Output file")
+    parser.add_argument("--make_fake", action="store_true", help="If true, changes unicode of non-space characters to create a fake language")
     args = parser.parse_args()
+
+    ## test if output file can be created
+    assert os.path.exists(os.path.dirname(args.output.rstrip("/"))), "Parent directory of output does not exist"
 
     with open(args.corpus, "r") as fin:
         sentences = fin.readlines()

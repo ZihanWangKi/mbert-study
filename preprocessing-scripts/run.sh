@@ -21,7 +21,7 @@ SHARD_DIR=$DATA_FOLDER/shards
 DATA_DIR=$DATA_FOLDER/data
 LOG_DIR=$DATA_FOLDER/logs
 VOCAB=$DATA_FOLDER/vocab.txt
-# size of the vocabulary to create
+# size of the vocabulary to create, will fill with at least 256 [UNUSED].
 VOCAB_SIZE=10000
 THREADS=12
 

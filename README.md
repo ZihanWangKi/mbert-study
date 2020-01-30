@@ -13,19 +13,24 @@ TODO
 
 #### Creating pre-training data
 ###### Preparation
-- Wikipedia text data if training from scratch. (TODO, put our scripts here as well)  
+- [Wikipedia](https://dumps.wikimedia.org/) text data if training from scratch.  
 
-We first provide a basic usage of our scripts.
-``init.sh`` will clone the official BERT repo, and create a ``test_data_folder`` with dummy text.
+We first provide a basic usage of our scripts.  
+``init.sh`` will clone the official BERT repo, and create a ``test_data_folder`` with dummy text.  
 ``preprocess_corpus.py`` takes in a text file and tokenizes it, additional parameter can be passed to control whether
-the language should be __fake__.
-``run.sh`` will shard the text files, create vocabulary for it, create bert-readable tensorflow records, and upload to google cloud.
+the language should be __fake__.  
+``run.sh`` will shard the text files, create vocabulary for it, create bert-readable tensorflow records, and upload to google cloud.  
 
 An example run that creates data that contains English and English Fake:
 ```bash
 ./init.sh
-python preprocess_corpus.py --corpus test_data_folder/raw_text/test.txt --output test_data_folder/txt/en.txt
-python preprocess_corpus.py --corpus test_data_folder/raw_text/test.txt --output test_data_folder/txt/en-fake.txt --make_fake
+python preprocess_corpus.py \
+    --corpus test_data_folder/raw_text/test.txt \
+    --output test_data_folder/txt/en.txt
+python preprocess_corpus.py \
+    --corpus test_data_folder/raw_text/test.txt \
+    --output test_data_folder/txt/en-fake.txt \
+    --make_fake
 ./run.sh
 ```
 
@@ -36,8 +41,8 @@ python preprocess_corpus.py --corpus test_data_folder/raw_text/test.txt --output
 - Google Cloud Tpu
 
 When creating a google cloud instance, make sure full api access is turned on.  
-In a google cloud instance, run ``init-gcloud-server.sh``.
-Running ``run.sh`` initiates bert training.
+In a google cloud instance, run ``init-gcloud-server.sh``.  
+Running ``run.sh`` initiates bert training.  
 
 #### Evaluating
 - TODO
