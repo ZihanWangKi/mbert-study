@@ -20,3 +20,6 @@ python preprocess_corpus.py \
     --make_fake
 ./run.sh
 ```
+
+``run.sh`` requires a valid google cloud storage bucket to upload the data to gcloud. 
+It also requires [gsutil](https://cloud.google.com/storage/docs/gsutil_install) to copy the files to the bucket.

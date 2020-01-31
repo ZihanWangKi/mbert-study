@@ -43,6 +43,7 @@ if __name__ == '__main__':
     parser.add_argument("--threads", type=int, default=12, help="Number of threads this process can use")
     parser.add_argument("--output", required=True, help="Output file")
     parser.add_argument("--make_fake", action="store_true", help="If true, changes unicode of non-space characters to create a fake language")
+    # TODO: add shuffle and random.
     args = parser.parse_args()
 
     ## test if output file can be created

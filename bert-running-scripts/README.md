@@ -5,5 +5,6 @@
 - Google Cloud Tpu
 
 When creating a google cloud instance, make sure full api access is turned on.  
-In a google cloud instance, run ``init-gcloud-server.sh``.  
-Running ``run.sh`` initiates bert training.  
+Correctly set GC_BUCKET_NAME in ``init-gcloud-server.sh`` to your cloud storage bucket name.  
+In a google cloud instance, run ``init-gcloud-server.sh`` and ``run.sh`` will be created.   
+Executing ``run.sh`` and passing it a tpu name initiates bert training.  
