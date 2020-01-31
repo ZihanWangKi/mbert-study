@@ -7,6 +7,7 @@ We first provide a basic usage of our scripts.
 ``preprocess_corpus.py`` takes in a text file and tokenizes it, additional parameter can be passed to control whether
 the language should be *fake*.  
 ``run.sh`` will shard the text files, create vocabulary for it, create bert-readable tensorflow records, and upload to google cloud.  
+``create_pretraining_data_permutation.py`` allows creating pre-training data with permuted sentences, where the permute probability and method can be freely chosen.
 
 An example run that creates data that contains English and English Fake:
 ```bash

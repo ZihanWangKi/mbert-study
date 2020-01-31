@@ -7,7 +7,6 @@ THREADS=12
 
 CREATE_VOCAB=1 # whether to create vocabulary
 VOCAB_SIZE=10000
-VOCAB=$DATA_FOLDER/vocab.txt
 if [ -d "$1" ]; then
   DATA_FOLDER=${1%/}
   if [ -f "$2" ]; then
@@ -16,6 +15,10 @@ if [ -d "$1" ]; then
     VOCAB_SIZE=$(wc -l $2 | cut -d' ' -f1)
     VOCAB=$2
   fi
+fi
+
+if [ $CREATE_VOCAB -eq 1 ]; then
+  VOCAB=$DATA_FOLDER/vocab.txt
 fi
 
 # Google cloud bucket name, needs to be changed!
@@ -83,6 +86,22 @@ for f in $SHARD_DIR/*; do
        --masked_lm_prob=0.15 \
        --random_seed=12345 \
        --dupe_factor=5 &> $LOG_DIR/"$(basename ${f})".log &
+
+#   ## permute the input
+#   python $BERT_PATH/create_pretraining_data_permutation.py.py \
+#       --input_file=${f} \
+#       --output_file=$DATA_DIR/"$(basename ${f})".tfrecord \
+#       --vocab_file=$VOCAB \
+#       --do_lower_case=False \
+#       --max_seq_length=128 \
+#       --do_whole_word_mask=True \
+#       --max_predictions_per_seq=20 \
+#       --masked_lm_prob=0.15 \
+#       --random_seed=12345 \
+#       --dupe_factor=5 &> $LOG_DIR/"$(basename ${f})".log \
+#       --perm_percent=0.25 \
+#       --swap_info_file=$LOG_DIR/"$(basename ${f})".swap.log \
+#       --perm_type=1 &
 done
 wait
 

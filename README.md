@@ -1,4 +1,4 @@
-# mBERT-Study
+# M-BERT-Study
 <h5 align="center">CROSS-LINGUAL ABILITY OF MULTILINGUAL BERT: AN EMPIRICAL STUDY</h5>
 
 ## Motivation 
@@ -31,15 +31,16 @@ Learning Objectives:
 
 #### Creating pre-training data
 
-See [preprocessing-scripts](preprocessing-scripts)
+If you would like to pre-train a BERT with Fake language/permuted sentences, see [preprocessing-scripts](preprocessing-scripts)
+for how to create the tfrecords for BERT training.
 
 #### Pre-training BERT
 
-See [bert-running-scripts](bert-running-scripts).
+Once you have uploaded the tfrecords to google cloud, you can set up an instance and start BERT training via [bert-running-scripts](bert-running-scripts).
 
 #### Evaluating
 
-See [evaluating-scripts](evaluating-scripts).
+With models we provide or just trained, we provide code for evaluating on two tasks, NER and entailment. See [evaluating-scripts](evaluating-scripts).
  
 
 ## Citation
