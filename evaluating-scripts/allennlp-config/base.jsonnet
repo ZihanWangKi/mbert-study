@@ -6,16 +6,16 @@
     "token_indexers": {
       "bert": {
           "type": "bert-pretrained",
-          "pretrained_model": std.extVar("PROJECT_DATA") + "/bert_pretrained_models/en-es",
+          "pretrained_model": std.extVar("PROJECT_DATA") + "/bert_pretrained_models/YOUR_BERT_MODEL",
           "do_lowercase": false,
           "use_starting_offsets": true,
           "truncate_long_sequences": false,
       },
     }
   },
-  "train_data_path": std.extVar("PROJECT_DATA") + "/datasets/ner/eng/eng.train.bio",
-  "validation_data_path": std.extVar("PROJECT_DATA") + "/datasets/ner/eng/eng.dev.bio",
-  "test_data_path": std.extVar("PROJECT_DATA") + "/datasets/ner/spa/spa.test.bio",
+  "train_data_path": std.extVar("PROJECT_DATA") + "/datasets/ner/TRAINING_LANGUAGE_A",
+  "validation_data_path": std.extVar("PROJECT_DATA") + "/datasets/ner/DEV_LANGUAGE_A",
+  "test_data_path": std.extVar("PROJECT_DATA") + "/datasets/ner/TEST_LANGUAGE_B",
   "evaluate_on_test": true,
   "model": {
     "type": "crf_tagger",
@@ -32,7 +32,7 @@
         "token_embedders": {
             "bert": {
                 "type": "bert-pretrained",
-                "pretrained_model": std.extVar("PROJECT_DATA") + "/bert_pretrained_models/en-es",
+                "pretrained_model": std.extVar("PROJECT_DATA") + "/bert_pretrained_models/YOUR_BERT_MODEL",
             },
         }
     },

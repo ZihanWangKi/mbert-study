@@ -9,7 +9,7 @@ CREATE_VOCAB=1 # whether to create vocabulary
 VOCAB_SIZE=10000
 VOCAB=$DATA_FOLDER/vocab.txt
 if [ -d "$1" ]; then
-  DATA_FOLDER=$1
+  DATA_FOLDER=${1%/}
   if [ -f "$2" ]; then
     # use precreated vocabulary
     CREATE_VOCAB=0
