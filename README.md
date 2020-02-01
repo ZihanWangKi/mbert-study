@@ -27,6 +27,7 @@ Learning Objectives:
 - Even marking sentences in languages with language-ids, allowing BERT to know exactly which language its learning on, did not hurt performance
 - Using word-pieces leads to strong improvements on both source and target language (likely to depend on tasks) and slight improvement cross-lingually comparing to word or character based models.
 
+Please refer to our paper for more details.
 ## Scripts
 
 #### Creating pre-training data
@@ -42,6 +43,15 @@ Once you have uploaded the tfrecords to google cloud, you can set up an instance
 
 With models we provide or just trained, we provide code for evaluating on two tasks, NER and entailment. See [evaluating-scripts](evaluating-scripts).
  
+## BERT Models
+
+We release the following bert models (in a few days):
+- Word-piece Experiments 
+- Word Order Experiments
+- Word Frequency Experiments
+- Model Structure Experiments
+
+See [data](data.json) for detailed paths to download (in a few days).
 
 ## Citation
 Please cite the following paper if you find our paper useful. Thanks!

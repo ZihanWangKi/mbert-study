@@ -1,6 +1,6 @@
 ## Preprocessing-scripts
 #### Preparation
-- [Wikipedia](https://dumps.wikimedia.org/) text data if training from scratch.  
+- [Wikipedia](https://dumps.wikimedia.org/) text data if training from scratch. We also release our training data on English(en), Spanish(es), Hindi(hi), and Russian(ru) [here](../data.json).
 
 We first provide a basic usage of our scripts.  
 ``init.sh`` will clone the official BERT repo, and create a ``test_data_folder`` with dummy text.  
