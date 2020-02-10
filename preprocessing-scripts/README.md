@@ -8,6 +8,7 @@ We first provide a basic usage of our scripts.
 the language should be *fake*.  
 ``run.sh`` will shard the text files, create vocabulary for it, create bert-readable tensorflow records, and upload to google cloud.  
 ``create_pretraining_data_permutation.py`` allows creating pre-training data with permuted sentences, where the permute probability and method can be freely chosen.
+``frequency_based_shuffle.py`` takes in a text corpus, and shuffles such that every word is replaced by a random word from the distribution of its vocabulary.
 
 An example run that creates data that contains English and English Fake:
 ```bash

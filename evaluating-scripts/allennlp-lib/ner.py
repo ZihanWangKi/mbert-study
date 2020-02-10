@@ -40,8 +40,6 @@ class NERTranslitDatasetReader(DatasetReader):
                  lazy: bool = False,
                  coding_scheme: str = "IOB1",
                  label_namespace: str = "labels",
-                 apply_transliteration: str = None, # (currently) only for ta files, uses the 'apply_transliteration' view as tokens
-                 apply_weight: str = None, # (currently) only for column files
                  ) -> None:
         super().__init__(lazy)
         self._token_indexers = token_indexers or {'tokens': SingleIdTokenIndexer()}
@@ -64,7 +62,7 @@ class NERTranslitDatasetReader(DatasetReader):
         # if `file_path` is a URL, redirect to the cache
         print(file_path)
         for single_file_path in file_path.split(','):
-            if os.path.isdir(single_file_path):  # read with json
+            if os.path.isdir(single_file_path):  # read with text_annotation: json like
                 logger.info("Reading instances from files in folder at: %s", single_file_path)
                 for fname in os.listdir(single_file_path):
                     doc = ccg.load_document_from_json(os.path.join(single_file_path, fname))
@@ -95,7 +93,7 @@ class NERTranslitDatasetReader(DatasetReader):
                             yield self.text_to_instance(single_file_path, tokens, ner_tags=ner_tags)
                     else:
                         print("doc has no ner: ", fname)
-            else:  # read with conll
+            else:  # read with conll format
                 with open(single_file_path, "r") as data_file:
                     logger.info("Reading instances from lines in file at: %s", single_file_path)
 
