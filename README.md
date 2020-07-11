@@ -53,6 +53,11 @@ We release the following bert models (in a few days):
 
 See [data](data.json) for detailed paths to download (in a few days).
 
+## Requirements
+
+- allennlp: 0.9.0
+- ccg_nlpy
+
 ## Citation
 Please cite the following paper if you find our paper useful. Thanks!
 
