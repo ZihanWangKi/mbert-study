@@ -14,10 +14,10 @@ An example run that creates data that contains English and English Fake:
 ```bash
 ./init.sh
 python preprocess_corpus.py \
-    --corpus test_data_folder/raw_text/test.txt \
+    --corpus test_data_folder/raw_txt/test.txt \
     --output test_data_folder/txt/en.txt
 python preprocess_corpus.py \
-    --corpus test_data_folder/raw_text/test.txt \
+    --corpus test_data_folder/raw_txt/test.txt \
     --output test_data_folder/txt/en-fake.txt \
     --make_fake
 ./run.sh
